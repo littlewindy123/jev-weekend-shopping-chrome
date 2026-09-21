@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>双休购：购物袋与双休暂停键</title>
+  <rect x="4" y="4" width="120" height="120" rx="30" fill="#26382f"/>
+  <path d="M47 48V39a17 17 0 0 1 34 0v9" stroke="#faf9f5" stroke-width="9" stroke-linecap="round"/>
+  <path d="M33 44h62a5 5 0 0 1 5 5l4 43a15 15 0 0 1-15 16H39a15 15 0 0 1-15-16l4-43a5 5 0 0 1 5-5Z" fill="#faf9f5"/>
+  <rect x="47" y="64" width="12" height="28" rx="4" fill="#c43b30"/>
+  <rect x="69" y="64" width="12" height="28" rx="4" fill="#c43b30"/>
+</svg>

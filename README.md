@@ -1,5 +1,7 @@
 # JEV 双休购 · Chrome 插件版
 
+<img src="icons/icon-128.png" width="80" height="80" alt="双休购图标：深绿底购物袋与红色暂停键">
+
 **简体中文** | [English](README.en.md)
 
 ### 把对双休的支持，带进每一次购物。
@@ -10,7 +12,7 @@
 
 **[下载插件 ZIP ↓](https://github.com/littlewindy123/jev-weekend-shopping-chrome/archive/refs/heads/main.zip)**　·　[图文安装教程](docs/INSTALL.md)　·　[获取 JEV API Key](https://console.typesafe.ai/keys)
 
-Chrome 137+ · v0.4.5 · MIT 开源 · 需填写自己的 TypeSafe API Key
+Chrome 137+ · v0.4.6 · MIT 开源 · 需填写自己的 TypeSafe API Key
 
 ## 用起来，就是这样
 
@@ -43,6 +45,10 @@ Chrome 137+ · v0.4.5 · MIT 开源 · 需填写自己的 TypeSafe API Key
 | **④ 逛起来** | 刷新京东或淘宝商品列表，向下滚动。看商品上的 PASS 和左下角运行统计。 |
 
 **不用安装 Node.js，不用运行代码，不用编译。** 下载的 ZIP 已包含完整插件。当前通过开发者模式安装，尚未上架 Chrome 应用商店。
+
+![Chrome 安装入口与成功加载的双休购物 0.4.6](docs/chrome-install-0.4.6.png)
+
+**点左上角「加载未打包的扩展程序」，选择解压后直接包含 `manifest.json` 的文件夹。** 出现图中的购物袋图标和「双休购物 0.4.6」卡片，即加载成功。不要选 ZIP 文件，也不用点「打包扩展程序」。
 
 第一次装浏览器插件？跟着 **[图文教程一步步操作 →](docs/INSTALL.md)**
 

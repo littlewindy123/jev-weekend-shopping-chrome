@@ -1,5 +1,7 @@
 # JEV Weekend Shopping · Chrome Extension
 
+<img src="icons/icon-128.png" width="80" height="80" alt="Weekend Shopping icon: a cream shopping bag with a red pause symbol on forest green">
+
 [简体中文](README.md) | **English**
 
 ### Bring your support for two-day weekends into every shopping trip.
@@ -10,7 +12,7 @@ No copying product descriptions. No switching to a chat window. No local model d
 
 **[Download extension ZIP ↓](https://github.com/littlewindy123/jev-weekend-shopping-chrome/archive/refs/heads/main.zip)** · [Get a JEV API key](https://console.typesafe.ai/keys) · [Report an issue](https://github.com/littlewindy123/jev-weekend-shopping-chrome/issues)
 
-Chrome 137+ · v0.4.5 · MIT licensed · Requires your own TypeSafe API key
+Chrome 137+ · v0.4.6 · MIT licensed · Requires your own TypeSafe API key
 
 ## See it in action
 
@@ -50,6 +52,10 @@ Extract the ZIP to a permanent folder. Open that folder and locate **`manifest.j
 3. Click **Load unpacked** and select the folder containing `manifest.json`.
 4. Look for **双休购物** in the extension list.
 
+![Chrome extension manager: Load unpacked in the upper-left red box and the installed v0.4.6 extension in the center red box](docs/chrome-install-0.4.6.png)
+
+The upper-left red box marks **Load unpacked** (「加载未打包的扩展程序」); the center box shows a successful installation with the new shopping-bag icon. Select the **folder directly containing `manifest.json`**, not the ZIP or the JSON file itself. If extraction creates a nested folder, open that inner folder first. Do not click **Pack extension** to install.
+
 You do not need Node.js, npm, or a build step. This is a complete unpacked extension; it is not currently listed in the Chrome Web Store.
 
 ### 3. Add your key and enable the extension
@@ -62,7 +68,7 @@ Click Chrome’s puzzle icon, then **双休购物**. The extension interface is 
 2. Click **保存并测试连接** (“Save and test connection”).
 3. After **官方 JEV 连接成功** (“Official JEV connected successfully”), turn on the top switch. **已开启** means enabled; **已暂停** means paused.
 
-The screenshot shows the unconfigured v0.4.3 popup; the steps are unchanged in v0.4.5. Connection testing sends a fictional sample request to the API.
+The screenshot shows the unconfigured v0.4.3 popup; the steps are unchanged in v0.4.6. Connection testing sends a fictional sample request to the API.
 
 ### 4. Refresh the store and start browsing
 

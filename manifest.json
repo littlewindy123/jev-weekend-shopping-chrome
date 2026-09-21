@@ -1,13 +1,14 @@
 {
   "manifest_version": 3,
   "name": "双休购物",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "浏览京东、淘宝时，用 TypeSafe 官方 JEV 判断商品卡片，猜测可能非双休的店铺直接盖 PASS。无需本地模型。",
   "minimum_chrome_version": "137",
   "permissions": ["storage", "offscreen"],
   "host_permissions": ["https://api.typesafe.ai/*", "https://www.jd.com/*", "https://search.jd.com/*", "https://list.jd.com/*", "https://s.taobao.com/*", "https://www.taobao.com/*"],
   "background": { "service_worker": "background.js", "type": "module" },
-  "action": { "default_popup": "popup.html", "default_title": "双休购物" },
+  "icons": { "16": "icons/icon-16.png", "32": "icons/icon-32.png", "48": "icons/icon-48.png", "128": "icons/icon-128.png" },
+  "action": { "default_popup": "popup.html", "default_title": "双休购物", "default_icon": { "16": "icons/icon-16.png", "32": "icons/icon-32.png", "48": "icons/icon-48.png", "128": "icons/icon-128.png" } },
   "content_scripts": [{
     "matches": ["https://www.jd.com/*", "https://search.jd.com/*", "https://list.jd.com/*", "https://s.taobao.com/*", "https://www.taobao.com/*"],
     "js": ["adapters.js", "content.js"],
