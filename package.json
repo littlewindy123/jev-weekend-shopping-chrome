@@ -1,0 +1,17 @@
+{
+  "name": "jev-weekend-shopping-chrome",
+  "version": "0.4.3",
+  "private": true,
+  "type": "module",
+  "description": "A minimal JEV-powered Chrome extension for shopping with weekends in mind",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/littlewindy123/jev-weekend-shopping-chrome.git"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "test:browser": "node tests/browser.mjs && node tests/native-page.mjs"
+  },
+  "devDependencies": { "playwright": "^1.62.1" }
+}

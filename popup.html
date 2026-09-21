@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>双休购物</title>
+  <link rel="stylesheet" href="popup.css">
+  <script src="popup.js" type="module"></script>
+</head>
+<body>
+  <main>
+    <header><span class="eyebrow">WEEKENDS MATTER</span><span class="edition">0.4.3 / 官方 JEV</span></header>
+    <div class="identity"><div><h1>双休购物<span>照常逛，命中就盖章。</span></h1></div><span class="mini-stamp" aria-hidden="true">PASS</span></div>
+    <section class="switch-row" aria-label="插件状态">
+      <div><strong id="switch-title">已暂停</strong><p id="switch-description">填写官方 Key，直接在商城原页使用</p></div>
+      <label class="switch"><input id="enabled" type="checkbox" role="switch" aria-label="启用双休购物" disabled><span></span></label>
+    </section>
+    <form id="settings">
+      <label class="field-label" for="api-key">TypeSafe 官方 API Key</label>
+      <input id="api-key" type="password" autocomplete="off" spellcheck="false" placeholder="粘贴 TypeSafe 控制台生成的 Key" aria-describedby="key-help" disabled>
+      <p id="key-help" class="hint">Key 保存在本机扩展中。仅连接 TypeSafe 官方服务。</p>
+      <button id="test" type="submit" disabled>保存并测试连接 <span aria-hidden="true">→</span></button>
+    </form>
+    <p id="status" class="status" role="status" aria-live="polite">正在读取设置…</p>
+    <p id="page-status" class="status" role="status">正在检查当前商城页面…</p>
+    <aside><span class="note-mark" aria-hidden="true">＊</span><p>PASS 代表 <strong>AI 猜测 · 未核实</strong>。<br>优先看公司、店铺；没有就看品牌、产品。</p></aside>
+    <footer><a href="https://console.typesafe.ai/keys" target="_blank" rel="noopener noreferrer">获取官方 API Key ↗</a><span>JEV 1.13 · 官方直连</span></footer>
+    <p class="privacy">开启后，商品卡片文字发送至 TypeSafe。调用消耗账户额度；无需下载本地模型。安装或更新后，请刷新商城页面。</p>
+  </main>
+</body>
+</html>

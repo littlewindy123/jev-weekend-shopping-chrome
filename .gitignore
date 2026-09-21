@@ -1,0 +1,10 @@
+node_modules/
+test-results/
+verification/
+screenshots/
+*.log
+.env*
+*.pem
+*.key
+.DS_Store
+Thumbs.db

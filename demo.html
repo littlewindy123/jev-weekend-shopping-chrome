@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>双休购物 · 模拟演示</title>
+  <link rel="stylesheet" href="demo.css">
+  <link rel="stylesheet" href="stamp.css">
+  <script src="adapters.js" defer></script>
+  <script src="content.js" defer></script>
+  <script src="demo.js" defer></script>
+</head>
+<body>
+  <div class="demo-notice">本页为虚构商品与预设结果 · 不调用 JEV · 不代表任何真实企业</div>
+  <header class="page-header"><a class="wordmark" href="demo.html">双休购物<span>WEEKENDS MATTER</span></a><span class="edition">交互样本 / 001</span></header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">慢慢逛，也为休息投一票。</p><h1>好东西值得买。<br><span>好周末也值得。</span></h1><p class="intro-copy">照常浏览，可能非双休的商品会被盖上 PASS。<br>判断不确定，就保持原样。你始终可以自由选择。</p></div>
+      <div class="specimen" aria-label="PASS 印章示意"><div class="sample-stamp">PASS</div><p>模拟结果 · 非 AI 判断</p><span>一枚小印章，一个小提醒。</span></div>
+    </section>
+    <section class="toolbar" aria-label="演示控制">
+      <label class="toggle"><input id="demo-enabled" type="checkbox" role="switch" checked><span></span><strong>启用模拟盖章</strong></label>
+      <div class="actions"><label class="error-toggle"><input id="demo-error" type="checkbox"> 模拟请求失败</label><button id="replace" type="button">替换首张商品</button><button id="append" type="button">追加商品 <span aria-hidden="true">＋</span></button></div>
+    </section>
+    <div class="listing-label"><h2>周末好物 <span>虚构商品列表</span></h2><p><span id="requests">0</span> 次模拟请求 <span class="separator">/</span> <span id="stamps">0</span> 枚印章</p></div>
+    <p id="feedback" class="feedback" role="status" aria-live="polite">向下滚动，新商品进入视口后继续判断。点击商品可检验印章是否遮挡。</p>
+    <section id="products" class="product-grid" aria-label="虚构商品"></section>
+    <div id="sentinel" class="sentinel">继续滚动，看看新商品。<span>最多自动展示 36 件；也可手动追加。</span></div>
+    <section class="explanation"><p class="eyebrow">把边界说清楚</p><h2>一个提示，不是一份企业调查。</h2><p>真实使用时，仅发送商品卡片上的标题、店铺和品牌等必要文字。AI 可能判断错误；品牌不等于店铺运营企业，全天营业也不等于同一位员工没有休息。未盖章不表示企业实行双休。</p><div class="legend"><span><i class="red"></i>预设可能非双休 → PASS</span><span><i class="green"></i>预设双休 / 不确定 → 保持原样</span><span><i></i>模拟错误 → 不盖章</span></div></section>
+  </main>
+  <footer class="page-footer"><span>双休购物 / 开源浏览器实验</span><span>把周末，还给生活。</span></footer>
+</body>
+</html>
