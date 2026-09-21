@@ -1,6 +1,6 @@
 {
   "name": "jev-weekend-shopping-chrome",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "private": true,
   "type": "module",
   "description": "A minimal JEV-powered Chrome extension for shopping with weekends in mind",
@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "node --test tests/*.test.js",
-    "test:browser": "node tests/browser.mjs && node tests/native-page.mjs"
+    "test:browser": "node tests/browser.mjs && node tests/native-page.mjs && node tests/taobao-page.mjs"
   },
   "devDependencies": { "playwright": "^1.62.1" }
 }

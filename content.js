@@ -10,6 +10,7 @@
     const doc = root.ownerDocument || root;
     const win = doc.defaultView;
     const records = new Map();
+    const observedRecords = new Map();
     const queue = [];
     const pendingScopes = new Set();
     const limit = Math.max(1, Math.min(3, maxConcurrent));
@@ -20,7 +21,9 @@
 
     function getDiagnostics() {
       const counts = { detected: records.size, checked: 0, pass: 0, weekend: 0, failed: 0, running: 0 };
+      let missingTitle = 0;
       for (const record of records.values()) {
+        if (record.visible && !record.product) missingTitle++;
         if (record.status === 'done') {
           counts.checked++;
           counts[record.choice === 'no_weekend' ? 'pass' : record.choice]++;
@@ -36,6 +39,7 @@
       else if (!counts.detected) message = '已开启，尚未识别到商品列表。请滚动到推荐商品，或进入搜索结果页。';
       else if (counts.failed) message += ` · 失败 ${counts.failed} 件：打开插件查看连接错误，修复后刷新页面。`;
       else if (counts.running) message += ` · 正在判断 ${counts.running} 件`;
+      else if (missingTitle) message += ` · ${missingTitle} 件可见商品未读到标题，等待页面加载或适配更新`;
       else if (!counts.checked) message += ' · 等待商品进入可见区域';
       return { ...counts, enabled, configured, message };
     }
@@ -77,6 +81,7 @@
     }
 
     function refresh(record) {
+      observeRecord(record);
       const product = adapter.extract(record.element);
       const key = product ? WS.fingerprint(product) + (adapter.identity?.(record.element) || '') : '';
       if (key !== record.key) {
@@ -117,7 +122,7 @@
       if (!operational() || !record.visible || !record.key || record.status !== 'idle' || record.timer || record.ready) return;
       record.timer = setTimeout(() => {
         record.timer = null;
-        if (!operational() || !record.visible || !inViewport(record.element)) return;
+        if (!operational() || !record.visible || !inViewport(record.observedElement)) return;
         const before = record.key;
         refresh(record);
         if (before !== record.key) { schedule(record); return; }
@@ -147,7 +152,7 @@
         const record = queue.shift();
         // Re-read identity and visibility immediately before any API request.
         if (record.status !== 'queued') continue;
-        if (!record.visible || !inViewport(record.element)) {
+        if (!record.visible || !inViewport(record.observedElement)) {
           record.status = 'idle';
           record.ready = false;
           continue;
@@ -192,9 +197,22 @@
       }
     }
 
+    function observeRecord(record) {
+      const target = adapter.visibilityTarget?.(record.element) || record.element;
+      if (record.observedElement === target) return;
+      if (record.observedElement) {
+        intersection.unobserve(record.observedElement);
+        observedRecords.delete(record.observedElement);
+      }
+      record.observedElement = target;
+      record.visible = false;
+      observedRecords.set(target, record);
+      intersection.observe(target);
+    }
+
     const intersection = new win.IntersectionObserver(entries => {
       for (const entry of entries) {
-        const record = records.get(entry.target);
+        const record = observedRecords.get(entry.target);
         if (!record) continue;
         record.visible = entry.isIntersecting && entry.intersectionRatio > 0;
         if (record.visible && operational()) {
@@ -217,7 +235,8 @@
         for (const [element, record] of records) {
           if (!element.isConnected || (root !== doc && !root.contains(element))) {
             reset(record);
-            intersection.unobserve(element);
+            intersection.unobserve(record.observedElement);
+            observedRecords.delete(record.observedElement);
             records.delete(element);
           }
         }
@@ -227,7 +246,7 @@
         if (!record) {
           record = { element, key: '', product: null, version: 0, visible: false, ready: false, status: 'idle', timer: null, stamp: null, host: null };
           records.set(element, record);
-          intersection.observe(element);
+          observeRecord(record);
         } else if (record.visible) {
           refresh(record);
           schedule(record);
@@ -275,13 +294,16 @@
       }
       for (const record of removed) {
         reset(record);
-        intersection.unobserve(record.element);
+        intersection.unobserve(record.observedElement);
+        observedRecords.delete(record.observedElement);
         records.delete(record.element);
         affected.delete(record);
       }
       // Changed offscreen cards lose stale marks immediately, without reading layout/text.
       for (const record of affected) {
-        if (record.visible) { refresh(record); schedule(record); }
+        const wasVisible = record.visible;
+        observeRecord(record);
+        if (record.visible || wasVisible) { refresh(record); schedule(record); }
         else reset(record);
       }
       if (pendingScopes.size && !scanTimer) scanTimer = setTimeout(() => {
@@ -345,6 +367,7 @@
       pendingScopes.clear();
       for (const record of records.values()) reset(record);
       records.clear();
+      observedRecords.clear();
     }
 
     if (subscribeState) unsubscribe = subscribeState(setState);

@@ -8,7 +8,7 @@
 
 **[下载插件 ZIP ↓](https://github.com/littlewindy123/jev-weekend-shopping-chrome/archive/refs/heads/main.zip)**　·　[图文安装教程](docs/INSTALL.md)　·　[获取 JEV API Key](https://console.typesafe.ai/keys)
 
-Chrome 137+ · v0.4.3 · MIT 开源 · 需填写自己的 TypeSafe API Key
+Chrome 137+ · v0.4.4 · MIT 开源 · 需填写自己的 TypeSafe API Key
 
 ## 用起来，就是这样
 

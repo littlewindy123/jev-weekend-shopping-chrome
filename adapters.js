@@ -1,4 +1,4 @@
-/* JD homepage/new search selectors were inspected on 2026-09-21; Taobao remains conservative. */
+/* Site adapters read product-local rendered text only. */
 (() => {
   'use strict';
   const WS = globalThis.WeekendShopping = globalThis.WeekendShopping || {};
@@ -97,6 +97,27 @@
     : card.matches(jdHome.cardSelector) ? jdHome : jdLegacy;
   const jdSelector = [jdLegacy.cardSelector, jdHome.cardSelector, jdSearch.cardSelector].join(', ');
 
+  const taobaoBase = adapter('taobao', productLinks('taobao') + ', .item.J_MouserOnverReq[data-nid]', {
+    title: ['[class*="Title--title"]', '[class*="Title--"]', '[class*="title--"]', '.title', '[class*="title" i]'],
+    shop: ['[class*="ShopInfo--shopName"]', '[class*="shopName"]', '.shop .shopname', '.shop .J_ShopInfo'],
+    brand: ['[class*="brandName"]', '.brand-name'],
+    desc: ['[class*="shopDescription"]', '.shop-description']
+  }, '[class*="MainPic--mainPicWrapper"], [class*="MainPic--mainPic"], .pic', ['data-nid', 'data-item-id']);
+
+  function taobaoCard(link) {
+    // Some layouts use an empty click-through anchor beside the image/title.
+    // Expand only within a single product; never promote a whole recommendation list.
+    const id = linkedId(link, 'taobao');
+    if (!id) return link;
+    let node = link;
+    for (let depth = 0; node && depth < 4; depth++, node = node.parentElement) {
+      const links = [...(node.matches(productLinks('taobao')) ? [node] : []), ...node.querySelectorAll(productLinks('taobao'))];
+      if (links.some(item => linkedId(item, 'taobao') !== id)) break;
+      if (node.querySelector('img') && node.querySelector('[class*="title" i]')) return node;
+    }
+    return link;
+  }
+
   WS.adapters = {
     jd: {
       name: 'jd', cardSelector: jdSelector,
@@ -105,12 +126,15 @@
       identity: card => jdVariant(card).identity(card),
       imageHost: card => jdVariant(card).imageHost(card)
     },
-    taobao: adapter('taobao', 'a[href*="item.taobao.com/item.htm"], a[href*="detail.tmall.com/item.htm"], .item.J_MouserOnverReq[data-nid]', {
-      title: ['[class*="Title--title"]', '[class*="Title--"]', '[class*="title--"]', '.title'],
-      shop: ['[class*="ShopInfo--shopName"]', '[class*="shopName"]', '.shop .shopname', '.shop .J_ShopInfo'],
-      brand: ['[class*="brandName"]', '.brand-name'],
-      desc: ['[class*="shopDescription"]', '.shop-description']
-    }, '[class*="MainPic--mainPicWrapper"], [class*="MainPic--mainPic"], .pic', ['data-nid', 'data-item-id']),
+    taobao: {
+      ...taobaoBase,
+      findCards(root) {
+        const cards = [...new Set(taobaoBase.findCards(root).map(taobaoCard))];
+        return cards.filter(card => !cards.some(other => other !== card && other.contains(card)));
+      },
+      // Observe the rendered image, not a potentially zero-size / display:contents anchor.
+      visibilityTarget: card => card.querySelector('img') || card
+    },
     demo: adapter('demo', '[data-dw-product]', {
       title: ['[data-dw-title]'],
       shop: ['[data-dw-shop]'],
