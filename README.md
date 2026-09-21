@@ -10,7 +10,7 @@
 
 **[下载插件 ZIP ↓](https://github.com/littlewindy123/jev-weekend-shopping-chrome/archive/refs/heads/main.zip)**　·　[图文安装教程](docs/INSTALL.md)　·　[获取 JEV API Key](https://console.typesafe.ai/keys)
 
-Chrome 137+ · v0.4.4 · MIT 开源 · 需填写自己的 TypeSafe API Key
+Chrome 137+ · v0.4.5 · MIT 开源 · 需填写自己的 TypeSafe API Key
 
 ## 用起来，就是这样
 
@@ -26,7 +26,7 @@ Chrome 137+ · v0.4.4 · MIT 开源 · 需填写自己的 TypeSafe API Key
 
 **左边盖章，旁边照常展示。** 印章直接叠在商城原来的商品图片上，商品仍然可以点击。
 
-*以上为实页运行截图：淘宝由用户提供，京东截取商品区域。PASS 表示「AI 猜测 · 未核实」，不代表对商家用工制度的事实认定。*
+*以上为旧版实页截图：淘宝由用户提供，京东截取商品区域。0.4.5 起商品图上只显示 PASS，小字说明已移至面板与声明。PASS 仍为 AI 猜测，不代表对商家用工制度的事实认定。*
 
 - **边逛边判断**：滚动浏览，新进入视野的商品自动参与判断。
 - **有店看店，没店看产品**：优先用店铺、品牌线索，没有就按商品文字猜测。

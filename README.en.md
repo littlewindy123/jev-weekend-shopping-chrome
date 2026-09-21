@@ -10,7 +10,7 @@ No copying product descriptions. No switching to a chat window. No local model d
 
 **[Download extension ZIP ↓](https://github.com/littlewindy123/jev-weekend-shopping-chrome/archive/refs/heads/main.zip)** · [Get a JEV API key](https://console.typesafe.ai/keys) · [Report an issue](https://github.com/littlewindy123/jev-weekend-shopping-chrome/issues)
 
-Chrome 137+ · v0.4.4 · MIT licensed · Requires your own TypeSafe API key
+Chrome 137+ · v0.4.5 · MIT licensed · Requires your own TypeSafe API key
 
 ## See it in action
 
@@ -26,7 +26,7 @@ Chrome 137+ · v0.4.4 · MIT licensed · Requires your own TypeSafe API key
 
 **One product gets a stamp; its neighbors stay as they are.** The overlay sits on the original image and does not block product clicks.
 
-*These are live-page screenshots, not mockups. The stamp includes “AI 猜测 · 未核实” (“AI guess · unverified”). It is not evidence of a merchant’s actual employment practices.*
+*These live-page screenshots show earlier versions. From v0.4.5, product images display only PASS; the explanatory note remains in the popup and disclaimer. A stamp is an AI guess, not evidence of a merchant’s actual employment practices.*
 
 - **Classify as you scroll.** Newly visible products are picked up automatically.
 - **Use the clues available.** Shop and brand information comes first; product text is used when those clues are missing.
@@ -62,7 +62,7 @@ Click Chrome’s puzzle icon, then **双休购物**. The extension interface is 
 2. Click **保存并测试连接** (“Save and test connection”).
 3. After **官方 JEV 连接成功** (“Official JEV connected successfully”), turn on the top switch. **已开启** means enabled; **已暂停** means paused.
 
-The screenshot shows the unconfigured v0.4.3 popup; the steps are unchanged in v0.4.4. Connection testing sends a fictional sample request to the API.
+The screenshot shows the unconfigured v0.4.3 popup; the steps are unchanged in v0.4.5. Connection testing sends a fictional sample request to the API.
 
 ### 4. Refresh the store and start browsing
 

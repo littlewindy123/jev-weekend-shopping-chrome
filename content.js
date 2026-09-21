@@ -106,10 +106,13 @@
       const label = doc.createElement('span');
       label.className = 'dw-stamp';
       label.textContent = 'PASS';
-      const note = doc.createElement('span');
-      note.className = 'dw-stamp-note';
-      note.textContent = demo ? '模拟结果 · 非 AI 判断' : 'AI 猜测 · 未核实';
-      overlay.append(label, note);
+      overlay.append(label);
+      if (demo) {
+        const note = doc.createElement('span');
+        note.className = 'dw-stamp-note';
+        note.textContent = '模拟结果 · 非 AI 判断';
+        overlay.append(note);
+      }
       if (win.getComputedStyle(host).position === 'static') {
         host.setAttribute('data-dw-stamp-host', '');
         record.host = host;

@@ -1,6 +1,6 @@
 {
   "name": "jev-weekend-shopping-chrome",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "private": true,
   "type": "module",
   "description": "A minimal JEV-powered Chrome extension for shopping with weekends in mind",

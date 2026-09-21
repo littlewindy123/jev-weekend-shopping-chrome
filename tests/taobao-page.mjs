@@ -35,6 +35,8 @@ try {
   assert.equal(await page.evaluate(() => controller.getDiagnostics().detected), 4);
   assert.match(await page.evaluate(() => controller.getDiagnostics().message), /未读到标题/);
   assert.equal(await page.locator('#sibling .dw-stamp').count(), 1);
+  assert.equal(await page.locator('.dw-stamp-note').count(), 0);
+  assert.deepEqual(await page.locator('.dw-stamp-overlay').allTextContents(), ['PASS', 'PASS']);
   console.log('PASS zero-size anchors and sibling titles enter classification; offscreen and missing-title cards do not');
 
   await page.evaluate(() => document.querySelector('#missing .goods-title').textContent = '延迟加载的虚构标题');
