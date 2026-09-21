@@ -18,7 +18,7 @@ Chrome 137+ · v0.4.5 · MIT licensed · Requires your own TypeSafe API key
 
 ![Live Taobao screenshot showing PASS stamps on some product images while other products remain unchanged](docs/taobao-live.png)
 
-**The results appear right on Taobao.** This user-provided screenshot of v0.4.4 shows 12 classified products: 10 stamped and 2 left unchanged.
+**The results appear right on Taobao.** This user-provided screenshot of v0.4.5 shows 12 classified products: 7 stamped and 5 left unchanged. Product images display only PASS.
 
 ### JD: the same store, with an extra cue
 
@@ -26,7 +26,7 @@ Chrome 137+ · v0.4.5 · MIT licensed · Requires your own TypeSafe API key
 
 **One product gets a stamp; its neighbors stay as they are.** The overlay sits on the original image and does not block product clicks.
 
-*These live-page screenshots show earlier versions. From v0.4.5, product images display only PASS; the explanatory note remains in the popup and disclaimer. A stamp is an AI guess, not evidence of a merchant’s actual employment practices.*
+*The user-provided Taobao screenshot shows v0.4.5; the JD screenshot shows an earlier version. Current product images display only PASS, with the explanatory note retained in the popup and disclaimer. A stamp is an AI guess, not evidence of a merchant’s actual employment practices.*
 
 - **Classify as you scroll.** Newly visible products are picked up automatically.
 - **Use the clues available.** Shop and brand information comes first; product text is used when those clues are missing.
